@@ -679,6 +679,17 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="deep_image/step.png" alt=""></p>
+
+</div>
+</div>
+</div></section><section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Consider-complex-network">Consider complex network<a class="anchor-link" href="#Consider-complex-network">&#182;</a></h1><p><img src="deep_image/tikz1.png" alt=""></p>
 
 </div>
@@ -728,8 +739,7 @@ div.output_prompt {
       1 & \mbox{if } w\cdot x + b > 0
     \end{array}
   \right.
-\tag{2}\end{eqnarray}<p><img src="deep_image/step.png" alt=""></p>
-
+\tag{2}\end{eqnarray}
 </div>
 </div>
 </div></section><section>
@@ -745,7 +755,7 @@ div.output_prompt {
 
 </div>
 </div>
-</div><div class="fragment" data-fragment-index="35">
+</div><div class="fragment" data-fragment-index="36">
     
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -759,7 +769,7 @@ div.output_prompt {
 </div>
 </div>
 </div>
-    </div><div class="fragment" data-fragment-index="36">
+    </div><div class="fragment" data-fragment-index="37">
     
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -805,7 +815,7 @@ div.output_prompt {
 
 </div>
 </div>
-</div><div class="fragment" data-fragment-index="39">
+</div><div class="fragment" data-fragment-index="40">
     
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -1102,8 +1112,7 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Pooling-for-invariance">Pooling for invariance<a class="anchor-link" href="#Pooling-for-invariance">&#182;</a></h1><blockquote><p>If one chooses the pooling regions to be contiguous areas in the image and only pools features generated from the same (replicated) hidden units. Then, these pooling units will then be ”‘translation invariant”’. This means that the same (pooled) feature will be active even when the image undergoes (small) translations. Translation-invariant features are often desirable; in many tasks (e.g., object detection, audio recognition), the label of the example (image) is the same even when the image is translated. For example, if you were to take an MNIST digit and translate it left or right, you would want your classifier to still accurately classify it as the same digit regardless of its final position.</p>
-</blockquote>
+<h1 id="Pooling">Pooling<a class="anchor-link" href="#Pooling">&#182;</a></h1><p><img src="deep_image/Pooling_schematic.gif" alt=""></p>
 <p>Source: <a href=http://ufldl.stanford.edu/tutorial/supervised/Pooling/>Feature Extraction Using Convolution</a></p>
 
 </div>
@@ -1115,7 +1124,8 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Pooling">Pooling<a class="anchor-link" href="#Pooling">&#182;</a></h1><p><img src="deep_image/Pooling_schematic.gif" alt=""></p>
+<h1 id="Pooling-for-invariance">Pooling for invariance<a class="anchor-link" href="#Pooling-for-invariance">&#182;</a></h1><blockquote><p>If one chooses the pooling regions to be contiguous areas in the image and only pools features generated from the same (replicated) hidden units. Then, these pooling units will then be ”‘translation invariant”’. This means that the same (pooled) feature will be active even when the image undergoes (small) translations. Translation-invariant features are often desirable; in many tasks (e.g., object detection, audio recognition), the label of the example (image) is the same even when the image is translated. For example, if you were to take an MNIST digit and translate it left or right, you would want your classifier to still accurately classify it as the same digit regardless of its final position.</p>
+</blockquote>
 <p>Source: <a href=http://ufldl.stanford.edu/tutorial/supervised/Pooling/>Feature Extraction Using Convolution</a></p>
 
 </div>
@@ -1195,7 +1205,7 @@ div.output_prompt {
 <h1 id="Activation-and-Cost-function">Activation and Cost function<a class="anchor-link" href="#Activation-and-Cost-function">&#182;</a></h1>
 </div>
 </div>
-</div><div class="fragment" data-fragment-index="39">
+</div><div class="fragment" data-fragment-index="40">
         
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1580,7 +1590,7 @@ div.output_prompt {
 <h1 id="theano.function">theano.function<a class="anchor-link" href="#theano.function">&#182;</a></h1>
 </div>
 </div>
-</div><div class="fragment" data-fragment-index="91">
+</div><div class="fragment" data-fragment-index="92">
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1597,7 +1607,7 @@ div.output_prompt {
 </div>
 
 </div>
-    </div><div class="fragment" data-fragment-index="92">
+    </div><div class="fragment" data-fragment-index="93">
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1615,7 +1625,7 @@ div.output_prompt {
 </div>
 
 </div>
-    </div><div class="fragment" data-fragment-index="93">
+    </div><div class="fragment" data-fragment-index="94">
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1679,7 +1689,7 @@ div.output_prompt {
 </div>
 </div>
 
-</div><div class="fragment" data-fragment-index="96">
+</div><div class="fragment" data-fragment-index="97">
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1694,7 +1704,7 @@ div.output_prompt {
 </div>
 
 </div>
-    </div><div class="fragment" data-fragment-index="97">
+    </div><div class="fragment" data-fragment-index="98">
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1726,7 +1736,7 @@ div.output_prompt {
 </div>
 
 </div>
-    </div><div class="fragment" data-fragment-index="98">
+    </div><div class="fragment" data-fragment-index="99">
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1784,7 +1794,7 @@ div.output_prompt {
 
 </div>
 </div>
-</div><div class="fragment" data-fragment-index="101">
+</div><div class="fragment" data-fragment-index="102">
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1802,7 +1812,7 @@ div.output_prompt {
 </div>
 
 </div>
-    </div><div class="fragment" data-fragment-index="102">
+    </div><div class="fragment" data-fragment-index="103">
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1833,7 +1843,7 @@ div.output_prompt {
 </div>
 
 </div>
-    </div><div class="fragment" data-fragment-index="103">
+    </div><div class="fragment" data-fragment-index="104">
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -2331,7 +2341,7 @@ div.output_prompt {
 
 </div>
 </div>
-</div><div class="fragment" data-fragment-index="115">
+</div><div class="fragment" data-fragment-index="116">
     
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
