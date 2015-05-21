@@ -659,13 +659,16 @@ div.output_prompt {
 <li>Input: $x_1, x_2, x_3$ </li>
 <li>如果我們在輸入的時候分別對他們都加上一個權重 $w_1, w_2, w_3$</li>
 <li>那我們就可以根據權重，加總起來後，如果有超過某個 threshold 就是 0， 不然就是 1 做爲結果判斷</li>
+<li>Simple Model as follow:</li>
 </ul>
-<p>$ \begin{eqnarray}
-  \mbox{output} &amp; = &amp; \left{ \begin{array}{ll}
-      0 &amp; \mbox{if } \sum_j w_j x_j \leq \mbox{ threshold} \
-      1 &amp; \mbox{if } \sum_j w_j x_j &gt; \mbox{ threshold}
+\begin{eqnarray}
+  \mbox{output} & = & \left\{ \begin{array}{ll}
+      0 & \mbox{if } \sum_j w_j x_j \leq \mbox{ threshold} \\
+      1 & \mbox{if } \sum_j w_j x_j > \mbox{ threshold}
       \end{array} \right.
-\tag{1}\end{eqnarray} $</p>
+\tag{1}\end{eqnarray}<ul>
+<li>那根據上面的模型，我們是不是就能做出一些簡單的 decision 了？</li>
+</ul>
 
 </div>
 </div>
@@ -676,7 +679,8 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="What-is-deep-learning">What is deep learning<a class="anchor-link" href="#What-is-deep-learning">&#182;</a></h1>
+<h1 id="Consider-complex-network">Consider complex network<a class="anchor-link" href="#Consider-complex-network">&#182;</a></h1><p><img src="deep_image/tikz1.png" alt=""></p>
+
 </div>
 </div>
 </div></section><section>
@@ -686,7 +690,12 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Basic-Neural-network">Basic Neural network<a class="anchor-link" href="#Basic-Neural-network">&#182;</a></h1>
+<h1 id="What-it-done">What it done<a class="anchor-link" href="#What-it-done">&#182;</a></h1><ul>
+<li>對第一層的 perceptrons 們 來說，根據輸入資料，他們做了三個簡單的決策</li>
+<li>對第二層的 perceptrons 們 來說，根據前一層所做的簡單的決策，他們可以做更抽象而且複雜的決策</li>
+<li>而越來越多層的結構，就可以做更複雜的事情</li>
+</ul>
+
 </div>
 </div>
 </div></section><section>
@@ -696,8 +705,245 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Breakthrough">Breakthrough<a class="anchor-link" href="#Breakthrough">&#182;</a></h1><ul>
-<li>Unsupervised learning</li>
+<h1 id="&#24863;&#35258;&#19968;&#19979;-&#19968;&#23652;-layer-&#20013;&#29992;&#24456;&#22810;-perceptron-&#21435;&#20570;-decision-&#30340;-fu">&#24863;&#35258;&#19968;&#19979; &#19968;&#23652; layer &#20013;&#29992;&#24456;&#22810; perceptron &#21435;&#20570; decision &#30340; fu<a class="anchor-link" href="#&#24863;&#35258;&#19968;&#19979;-&#19968;&#23652;-layer-&#20013;&#29992;&#24456;&#22810;-perceptron-&#21435;&#20570;-decision-&#30340;-fu">&#182;</a></h1><p><img src="deep_image/perceptron.png" alt=""></p>
+<p>Source： <a href=https://www.coursera.org/course/ntumlone>機器學習，林軒田</a></p>
+
+</div>
+</div>
+</div></section><section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Simpler-way">Simpler way<a class="anchor-link" href="#Simpler-way">&#182;</a></h1><ul>
+<li>如果我們考慮一個 perceptron 中的 threshold 是 bias，並用 vector 表示</li>
+<li>bias = b = threshold</li>
+</ul>
+\begin{eqnarray}
+  \mbox{output} = \left\{ 
+    \begin{array}{ll} 
+      0 & \mbox{if } w\cdot x + b \leq 0 \\
+      1 & \mbox{if } w\cdot x + b > 0
+    \end{array}
+  \right.
+\tag{2}\end{eqnarray}<p><img src="deep_image/step.png" alt=""></p>
+
+</div>
+</div>
+</div></section><section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Problems-of-perceptron">Problems of perceptron<a class="anchor-link" href="#Problems-of-perceptron">&#182;</a></h1><ul>
+<li>perceptron 的 output 是 0 或 1， 這導致我們在 learning 計算 gradient (cost function and gradient) 會有問題</li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment" data-fragment-index="35">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>比如說，如果 w 的改變量改變了一點點，但是對於 perceptron 來說可能就是 0 或 1 的劇烈改變</li>
+</ul>
+
+</div>
+</div>
+</div>
+    </div><div class="fragment" data-fragment-index="36">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>那我們就很難慢慢的去改變 w ，而很難去達到 我們想要學習的 結果</li>
+</ul>
+
+</div>
+</div>
+</div>
+    </div></section><section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Solving--perceptron-problem">Solving  perceptron problem<a class="anchor-link" href="#Solving--perceptron-problem">&#182;</a></h1><ul>
+<li>Introduce sigmoid activation function</li>
+<li>我們可以有介於 0 到 1 的機率</li>
+<li>Let $z =  w_j x_j-b $</li>
+</ul>
+\begin{eqnarray} 
+  \sigma(z) \equiv \frac{1}{1+e^{-z}} = \frac{1}{1+\exp(-\sum_j w_j x_j-b)} .
+\tag{3}\end{eqnarray}<p><img src="deep_image/sigmoid.png" alt=""></p>
+
+</div>
+</div>
+</div></section><section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Feed-forward">Feed forward<a class="anchor-link" href="#Feed-forward">&#182;</a></h1><ul>
+<li>上面由輸入到算出一個結果的過程就是 feed forward algorithm</li>
+<li>而我們要計算這個 model 的錯誤並開始 iterate 回去計算應該怎麼更新我們的 w 就是 back propagation</li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment" data-fragment-index="39">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Back propagation:<ul>
+<li>Define cost function: L2, cross entropy, etc...</li>
+<li>Define optimize method: SGD, momentum, etc...</li>
+</ul>
+</li>
+<li>這裏不介紹 back propagation，請各位客官自己 review 咯</li>
+</ul>
+
+</div>
+</div>
+</div>
+    </div></section><section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="So-far-...">So far ...<a class="anchor-link" href="#So-far-...">&#182;</a></h1><p><img src="deep_image/funny/62291_10150089651464688_8360384_n.jpg" alt=""></p>
+
+</div>
+</div>
+</div></section><section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="What-is-deep-learning">What is deep learning<a class="anchor-link" href="#What-is-deep-learning">&#182;</a></h1><p><img src="deep_image/great_giant.png" alt=""></p>
+<p>Source： <a href=http://www.slideshare.net/roelofp/2014-1021-sicsdlnlpg>Deep Learning &amp; NLP: Graphs to the Rescue</a></p>
+
+</div>
+</div>
+</div></section><section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="What-is-deep-learning">What is deep learning<a class="anchor-link" href="#What-is-deep-learning">&#182;</a></h1><ul>
+<li>Deep learning = Learning Representations / Features </li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="deep_image/feature.png" alt=""></p>
+<p>Source： <a href=http://www.slideshare.net/yandex/yann-le-cun>Learning Hierarchies Of Invariant Features</a></p>
+
+</div>
+</div>
+</div></section><section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Why-deep?">Why deep?<a class="anchor-link" href="#Why-deep?">&#182;</a></h1><ul>
+<li>建構一個傳統的 model 很昂貴，因爲 做 feature engineer 是一個又長又痛苦的過程<ul>
+<li>deep 可以自動化這個過程</li>
+</ul>
+</li>
+<li>資料量 和 運算能力 的 增加使 deep 更容易</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Shallow-learning-V.S.--Deep-learning">Shallow learning V.S.  Deep learning<a class="anchor-link" href="#Shallow-learning-V.S.--Deep-learning">&#182;</a></h1><ul>
+<li>兩層的 model 並不 deep, 因爲沒有做 feature 的 hierarchy</li>
+<li>SVMs and Kernel method 也不 deep<ul>
+<li>因爲 layer 1 做 kernel，layer 2 做 linear 的classification</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Nightmare-of-deep">Nightmare of deep<a class="anchor-link" href="#Nightmare-of-deep">&#182;</a></h1><ul>
+<li>因爲 feature hierarchy，deep 都牽扯到 non-convex 的 loss function</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Deep-learning-timeline">Deep learning timeline<a class="anchor-link" href="#Deep-learning-timeline">&#182;</a></h1><p><img src="deep_image/deep_time.png" alt=""></p>
+<p>Source： <a href=http://www.slideshare.net/yandex/yann-le-cun>Learning Hierarchies Of Invariant Features</a></p>
+
+</div>
+</div>
+</div></section><section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Breakthrough-(2006s)">Breakthrough (2006s)<a class="anchor-link" href="#Breakthrough-(2006s)">&#182;</a></h1><ul>
+<li>Unsupervised pre-training<ul>
+<li>RBM</li>
+<li>Autoencoders</li>
+</ul>
+</li>
 <li>GPU</li>
 </ul>
 
@@ -720,6 +966,30 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="pre-training">pre training<a class="anchor-link" href="#pre-training">&#182;</a></h1><p><img src="deep_image/pretraining.png" alt=""></p>
+<p>Source： <a href=http://www.slideshare.net/roelofp/2014-1021-sicsdlnlpg>Deep Learning &amp; NLP: Graphs to the Rescue</a></p>
+
+</div>
+</div>
+</div></section><section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="pre-training">pre training<a class="anchor-link" href="#pre-training">&#182;</a></h1><p><img src="deep_image/pretrain2.png" alt=""></p>
+<p>Source： <a href=http://www.slideshare.net/roelofp/2014-1021-sicsdlnlpg>Deep Learning &amp; NLP: Graphs to the Rescue</a></p>
+
+</div>
+</div>
+</div></section><section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="CNN">CNN<a class="anchor-link" href="#CNN">&#182;</a></h1>
 </div>
 </div>
@@ -730,7 +1000,11 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="RBM">RBM<a class="anchor-link" href="#RBM">&#182;</a></h1>
+<h1 id="Problem-of-Fully-connected-layer">Problem of Fully connected layer<a class="anchor-link" href="#Problem-of-Fully-connected-layer">&#182;</a></h1><ul>
+<li>對於 96x96 images，對這整張照片去學習 feature ( 透過之前全展開的 network) ，是計算量非常龐大的事情</li>
+<li>我們需要 $10^4$ 的輸入neurons， 如果我們想要學 100 個 features， 我們就會有 $10^6$ 的參數學習</li>
+</ul>
+
 </div>
 </div>
 </div></section><section>
@@ -740,7 +1014,11 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Auto-encoder">Auto encoder<a class="anchor-link" href="#Auto-encoder">&#182;</a></h1>
+<h1 id="Solution&#65306;-Locally-connected-layer">Solution&#65306; Locally connected layer<a class="anchor-link" href="#Solution&#65306;-Locally-connected-layer">&#182;</a></h1><ul>
+<li>限制 hidden units 和 input units之間的連接，只允許 hidden unit 和 部分的 input units 做連接</li>
+<li>等於說 每一個 hidden unit 只會連接到 一個小區域 的 input pixels</li>
+</ul>
+
 </div>
 </div>
 </div></section><section>
@@ -750,7 +1028,13 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Supervised-learning">Supervised learning<a class="anchor-link" href="#Supervised-learning">&#182;</a></h1>
+<h1 id="Convolution-Review">Convolution Review<a class="anchor-link" href="#Convolution-Review">&#182;</a></h1><p><img src="deep_image/Wiki-BoxConvAnim.gif" alt=""></p>
+<p>Source: Wikipedia</p>
+<p>Reference:</p>
+<ul>
+<li>Understanding Convolutions : <a href="http://colah.github.io/posts/2014-07-Understanding-Convolutions/">http://colah.github.io/posts/2014-07-Understanding-Convolutions/</a></li>
+</ul>
+
 </div>
 </div>
 </div></section><section>
@@ -760,7 +1044,13 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="RNN">RNN<a class="anchor-link" href="#RNN">&#182;</a></h1>
+<h1 id="Convolution">Convolution<a class="anchor-link" href="#Convolution">&#182;</a></h1><ul>
+<li>照片有 “stationary” 的特性</li>
+<li>統計上照片的一小部分的 feature 其實會和其他照片 會有相同的地方，因此就可以把這個 feature 用在 所有的 location</li>
+<li>如果我們使用一個 小的 8x8 patches 對照片做 隨機抽樣，那我們就可以將這個 8x8 學到 的 patches 用在其他照片上面</li>
+<li>而用在其他照片上面可以想成 對 一張照片 做 convolved，我們就可以得到一張照片 的 feature</li>
+</ul>
+
 </div>
 </div>
 </div></section><section>
@@ -770,7 +1060,113 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Compare-with-other-model">Compare with other model<a class="anchor-link" href="#Compare-with-other-model">&#182;</a></h1>
+<h1 id="Convolution">Convolution<a class="anchor-link" href="#Convolution">&#182;</a></h1><p><img src="deep_image/Convolution_schematic.gif" alt=""></p>
+<p>Source: <a href=http://ufldl.stanford.edu/tutorial/supervised/FeatureExtractionUsingConvolution/>Feature Extraction Using Convolution</a></p>
+
+</div>
+</div>
+</div></section><section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Pooling">Pooling<a class="anchor-link" href="#Pooling">&#182;</a></h1><ul>
+<li>雖然我們還是可以用 convolution 出來的 feature 做 classification</li>
+<li>但考慮一個 images of size 96x96 pixels, 假設我們學了 400 features over 8x8 inputs. </li>
+<li>Each convolution results in an output of size (96−8+1)∗(96−8+1)=7921</li>
+<li>然後我們有 400 features, 那我們就會有 vector of 892∗400=3,168,400 features per example</li>
+<li>計算龐大！！</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Pooling">Pooling<a class="anchor-link" href="#Pooling">&#182;</a></h1><h2 id="--&#22240;&#29234;&#29031;&#29255;&#26377;-&#8220;stationary&#8221;-&#30340;&#29305;&#24615;">- &#22240;&#29234;&#29031;&#29255;&#26377; &#8220;stationary&#8221; &#30340;&#29305;&#24615;<a class="anchor-link" href="#--&#22240;&#29234;&#29031;&#29255;&#26377;-&#8220;stationary&#8221;-&#30340;&#29305;&#24615;">&#182;</a></h2><blockquote><p>which implies that features that are useful in one region are also likely to be useful for other regions. Thus, to describe a large image, one natural approach is to aggregate statistics of these features at various locations. For example, one could compute the mean (or max) value of a particular feature over a region of the image. These summary statistics are much lower in dimension (compared to using all of the extracted features) and can also improve results (less over-fitting). We aggregation operation is called this operation ”‘pooling”’, or sometimes ”‘mean pooling”’ or ”‘max pooling”’</p>
+</blockquote>
+<p>Source: <a href=http://ufldl.stanford.edu/tutorial/supervised/Pooling/>Feature Extraction Using Convolution</a></p>
+
+</div>
+</div>
+</div></section><section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Pooling-for-invariance">Pooling for invariance<a class="anchor-link" href="#Pooling-for-invariance">&#182;</a></h1><blockquote><p>If one chooses the pooling regions to be contiguous areas in the image and only pools features generated from the same (replicated) hidden units. Then, these pooling units will then be ”‘translation invariant”’. This means that the same (pooled) feature will be active even when the image undergoes (small) translations. Translation-invariant features are often desirable; in many tasks (e.g., object detection, audio recognition), the label of the example (image) is the same even when the image is translated. For example, if you were to take an MNIST digit and translate it left or right, you would want your classifier to still accurately classify it as the same digit regardless of its final position.</p>
+</blockquote>
+<p>Source: <a href=http://ufldl.stanford.edu/tutorial/supervised/Pooling/>Feature Extraction Using Convolution</a></p>
+
+</div>
+</div>
+</div></section><section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Pooling">Pooling<a class="anchor-link" href="#Pooling">&#182;</a></h1><p><img src="deep_image/Pooling_schematic.gif" alt=""></p>
+<p>Source: <a href=http://ufldl.stanford.edu/tutorial/supervised/Pooling/>Feature Extraction Using Convolution</a></p>
+
+</div>
+</div>
+</div></section><section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Auto-encoder">Auto encoder<a class="anchor-link" href="#Auto-encoder">&#182;</a></h1><p><img src="deep_image/auto_endocoder.png" alt=""></p>
+<p>Source： <a href=http://www.slideshare.net/roelofp/2014-1021-sicsdlnlpg>Deep Learning &amp; NLP: Graphs to the Rescue</a></p>
+
+</div>
+</div>
+</div></section><section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="RNN">RNN<a class="anchor-link" href="#RNN">&#182;</a></h1><p><img src="deep_image/rnn.png" alt=""></p>
+<p>Reference:</p>
+<ul>
+<li><a href="http://www.fit.vutbr.cz/~imikolov/rnnlm/thesis.pdf">http://www.fit.vutbr.cz/~imikolov/rnnlm/thesis.pdf</a></li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="RNN">RNN<a class="anchor-link" href="#RNN">&#182;</a></h1><p><img src="deep_image/rnn_bptt.png" alt=""></p>
+
+</div>
+</div>
+</div></section><section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="RNN">RNN<a class="anchor-link" href="#RNN">&#182;</a></h1><p><img src="deep_image/rnn_class.jpg" alt=""></p>
+
 </div>
 </div>
 </div></section><section>
@@ -799,7 +1195,7 @@ div.output_prompt {
 <h1 id="Activation-and-Cost-function">Activation and Cost function<a class="anchor-link" href="#Activation-and-Cost-function">&#182;</a></h1>
 </div>
 </div>
-</div><div class="fragment" data-fragment-index="15">
+</div><div class="fragment" data-fragment-index="39">
         
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -887,7 +1283,9 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Momentum">Momentum<a class="anchor-link" href="#Momentum">&#182;</a></h1>
+<h1 id="Dropout">Dropout<a class="anchor-link" href="#Dropout">&#182;</a></h1><p><img src="deep_image/dropout.png" alt=""></p>
+<p><a href="http://www.cs.toronto.edu/~rsalakhu/papers/srivastava14a.pdf">http://www.cs.toronto.edu/~rsalakhu/papers/srivastava14a.pdf</a></p>
+
 </div>
 </div>
 </div></section><section>
@@ -897,17 +1295,12 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Dropout">Dropout<a class="anchor-link" href="#Dropout">&#182;</a></h1>
-</div>
-</div>
-</div></section><section>
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Early-Stopping">Early Stopping<a class="anchor-link" href="#Early-Stopping">&#182;</a></h1>
+<h1 id="early-stopping">early stopping<a class="anchor-link" href="#early-stopping">&#182;</a></h1><p><img src="deep_image/early_stopping.png" alt=""></p>
+<p>Early Stopping , but when?</p>
+<ul>
+<li><a href="http://page.mi.fu-berlin.de/prechelt/Biblio/stop_tricks1997.pdf">http://page.mi.fu-berlin.de/prechelt/Biblio/stop_tricks1997.pdf</a></li>
+</ul>
+
 </div>
 </div>
 </div></section><section>
@@ -920,6 +1313,7 @@ div.output_prompt {
 <h1 id="&#25105;&#20497;&#27794;&#26377;-cover-&#30340;&#26481;&#35199;&#26377;&#65306;">&#25105;&#20497;&#27794;&#26377; cover &#30340;&#26481;&#35199;&#26377;&#65306;<a class="anchor-link" href="#&#25105;&#20497;&#27794;&#26377;-cover-&#30340;&#26481;&#35199;&#26377;&#65306;">&#182;</a></h1><ol>
 <li>數學</li>
 <li>更多的 gradient 方法</li>
+<li>Early stopping</li>
 <li>Etc...</li>
 </ol>
 <p>請參考：</p>
@@ -1186,7 +1580,7 @@ div.output_prompt {
 <h1 id="theano.function">theano.function<a class="anchor-link" href="#theano.function">&#182;</a></h1>
 </div>
 </div>
-</div><div class="fragment" data-fragment-index="66">
+</div><div class="fragment" data-fragment-index="91">
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1203,7 +1597,7 @@ div.output_prompt {
 </div>
 
 </div>
-    </div><div class="fragment" data-fragment-index="67">
+    </div><div class="fragment" data-fragment-index="92">
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1221,7 +1615,7 @@ div.output_prompt {
 </div>
 
 </div>
-    </div><div class="fragment" data-fragment-index="68">
+    </div><div class="fragment" data-fragment-index="93">
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1285,7 +1679,7 @@ div.output_prompt {
 </div>
 </div>
 
-</div><div class="fragment" data-fragment-index="71">
+</div><div class="fragment" data-fragment-index="96">
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1300,7 +1694,7 @@ div.output_prompt {
 </div>
 
 </div>
-    </div><div class="fragment" data-fragment-index="72">
+    </div><div class="fragment" data-fragment-index="97">
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1332,7 +1726,7 @@ div.output_prompt {
 </div>
 
 </div>
-    </div><div class="fragment" data-fragment-index="73">
+    </div><div class="fragment" data-fragment-index="98">
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1390,7 +1784,7 @@ div.output_prompt {
 
 </div>
 </div>
-</div><div class="fragment" data-fragment-index="76">
+</div><div class="fragment" data-fragment-index="101">
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1408,7 +1802,7 @@ div.output_prompt {
 </div>
 
 </div>
-    </div><div class="fragment" data-fragment-index="77">
+    </div><div class="fragment" data-fragment-index="102">
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1439,7 +1833,7 @@ div.output_prompt {
 </div>
 
 </div>
-    </div><div class="fragment" data-fragment-index="78">
+    </div><div class="fragment" data-fragment-index="103">
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1937,7 +2331,7 @@ div.output_prompt {
 
 </div>
 </div>
-</div><div class="fragment" data-fragment-index="90">
+</div><div class="fragment" data-fragment-index="115">
     
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -2068,17 +2462,12 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Neural-Language-Model">Neural Language Model<a class="anchor-link" href="#Neural-Language-Model">&#182;</a></h1>
-</div>
-</div>
-</div></section><section>
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="word2vec">word2vec<a class="anchor-link" href="#word2vec">&#182;</a></h1>
+<h1 id="word2vec">word2vec<a class="anchor-link" href="#word2vec">&#182;</a></h1><p><img src="deep_image/word2vec.png" alt=""></p>
+<ul>
+<li><a href="https://code.google.com/p/word2vec/">https://code.google.com/p/word2vec/</a></li>
+<li><a href="http://research.microsoft.com/pubs/189726/rvecs.pdf">http://research.microsoft.com/pubs/189726/rvecs.pdf</a></li>
+</ul>
+
 </div>
 </div>
 </div></section><section>
@@ -2315,6 +2704,7 @@ Reference:</li>
 <li><a href=http://danielnouri.org/notes/2014/12/17/using-convolutional-neural-nets-to-detect-facial-keypoints-tutorial/> Using convolutional neural nets to detect facial keypoints tutorial </a></li>
 <li><a href=http://www.iro.umontreal.ca/~bengioy/yoshua_en/research.html> Yoshua Bengio </a></li>
 <li><a href=https://www.coursera.org/course/neuralnets> Hinton Coursera website </a></li>
+<li><a href=http://140.112.21.28/~tlkagk/homepage/courses_MLSD15.html> NTU MLDS class of deep learning </a></li>
 <li><a href=https://speakerdeck.com/ogrisel/the-state-of-deep-learning-in-1> The State of Deep Learning in 2014 </a></li>
 <li>四部曲<a href=http://www.36dsj.com/archives/20804> 神经网络简史 </a></li>
 <li>四部曲<a href=http://www.36dsj.com/archives/20186> 深度学习系列：Mariana DNN多GPU数据并行框架 微信语音是怎么来的？（二） </a></li>
