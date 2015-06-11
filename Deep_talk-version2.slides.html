@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-<title>Deep_talk slides</title>
+<title>Deep_talk-version2 slides</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -1134,6 +1134,50 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Why-Deep-learning-hard-to-train">Why Deep learning hard to train<a class="anchor-link" href="#Why-Deep-learning-hard-to-train">&#182;</a></h1><ul>
+<li>Gradient vanishing problem</li>
+<li>exploding gradient problem</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Problem-of-sigmoid">Problem of sigmoid<a class="anchor-link" href="#Problem-of-sigmoid">&#182;</a></h1><p><img src="deep_image/sigmoid_problem.png" alt=""></p>
+<ul>
+<li>Derivative of Sigmoid Function is always smaller than 1</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Relu">Relu<a class="anchor-link" href="#Relu">&#182;</a></h1><p><img src="deep_image/relu_1.png" alt=""></p>
+<ul>
+<li>Wont saturate</li>
+<li>But if weighted input is negative, output will become 0, and gradient will vanishes</li>
+<li>PRelu</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="CNN">CNN<a class="anchor-link" href="#CNN">&#182;</a></h1>
 </div>
 </div>
@@ -1271,7 +1315,7 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Auto-encoder">Auto encoder<a class="anchor-link" href="#Auto-encoder">&#182;</a></h1><p><img src="deep_image/auto_endocoder.png" alt=""></p>
+<h1 id="Auto-encoder">Auto encoder<a class="anchor-link" href="#Auto-encoder">&#182;</a></h1><p><a href="deep_image/auto_endocoder.png"></a></p>
 <p>Source： <a href=http://www.slideshare.net/roelofp/2014-1021-sicsdlnlpg>Deep Learning &amp; NLP: Graphs to the Rescue</a></p>
 
 </div>
@@ -1590,7 +1634,7 @@ div.output_prompt {
 <h1 id="theano.function">theano.function<a class="anchor-link" href="#theano.function">&#182;</a></h1>
 </div>
 </div>
-</div><div class="fragment" data-fragment-index="92">
+</div><div class="fragment" data-fragment-index="95">
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1607,7 +1651,7 @@ div.output_prompt {
 </div>
 
 </div>
-    </div><div class="fragment" data-fragment-index="93">
+    </div><div class="fragment" data-fragment-index="96">
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1625,7 +1669,7 @@ div.output_prompt {
 </div>
 
 </div>
-    </div><div class="fragment" data-fragment-index="94">
+    </div><div class="fragment" data-fragment-index="97">
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1689,7 +1733,7 @@ div.output_prompt {
 </div>
 </div>
 
-</div><div class="fragment" data-fragment-index="97">
+</div><div class="fragment" data-fragment-index="100">
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1704,7 +1748,7 @@ div.output_prompt {
 </div>
 
 </div>
-    </div><div class="fragment" data-fragment-index="98">
+    </div><div class="fragment" data-fragment-index="101">
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1736,7 +1780,7 @@ div.output_prompt {
 </div>
 
 </div>
-    </div><div class="fragment" data-fragment-index="99">
+    </div><div class="fragment" data-fragment-index="102">
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1794,7 +1838,7 @@ div.output_prompt {
 
 </div>
 </div>
-</div><div class="fragment" data-fragment-index="102">
+</div><div class="fragment" data-fragment-index="105">
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1812,7 +1856,7 @@ div.output_prompt {
 </div>
 
 </div>
-    </div><div class="fragment" data-fragment-index="103">
+    </div><div class="fragment" data-fragment-index="106">
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1843,7 +1887,7 @@ div.output_prompt {
 </div>
 
 </div>
-    </div><div class="fragment" data-fragment-index="104">
+    </div><div class="fragment" data-fragment-index="107">
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -2341,7 +2385,7 @@ div.output_prompt {
 
 </div>
 </div>
-</div><div class="fragment" data-fragment-index="116">
+</div><div class="fragment" data-fragment-index="119">
     
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
